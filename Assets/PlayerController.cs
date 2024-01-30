@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 newVelocity = new Vector3 (xSpeed,0f, zSpeed);
 
-        playerRigidbody.velocity = newVelocity;
+        playerRigidbody.velocity = newVelocity; //∞°º”µµ∏¶ ¡‹
     }
 
     public void Die()
