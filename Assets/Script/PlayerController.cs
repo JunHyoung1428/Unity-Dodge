@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour
 
         Vector3 newVector = new Vector3 (xSpeed,0f, zSpeed);
 
-        playerRigidbody.velocity = newVector; //∞°º”µµ∏¶ ¡‹
-        if(newVector != null)
+        playerRigidbody.velocity = newVector; 
+        if(newVector != Vector3.zero)
         {
             playerRigidbody.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newVector), Time.deltaTime * rotateSpeed);
         }
