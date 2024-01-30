@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRigidbody;
+    public GameObject destroyTank;
     public ParticleSystem explosion;
     public float speed = 8.0f;
     public float rotateSpeed = 10.0f;
@@ -40,8 +41,9 @@ public class PlayerController : MonoBehaviour
         if (explosion != null)
         {
            explosion.transform.position = playerRigidbody.transform.position;
+           destroyTank.transform.position = playerRigidbody.transform.position;
            explosion.Play();
-           Debug.Log("play explosion");
+           destroyTank.SetActive(true);
         }
         //자신의 오브젝트 비활성화
         gameObject.SetActive(false);

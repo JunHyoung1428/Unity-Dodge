@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
+    [Range(0f, 180f)]
     public float rotationSpeed = 60f;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
