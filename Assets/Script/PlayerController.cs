@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate() //물리연산은 Update 대신 1초에 50번 연산을 보장 할 수 있는 FixedUpdate()에 쓰는게 좋음
     {
         float xInput = Input.GetAxis("Horizontal");
         float zInput = Input.GetAxis("Vertical");
