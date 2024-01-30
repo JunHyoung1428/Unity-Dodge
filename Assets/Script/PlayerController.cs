@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRigidbody;
     public GameObject destroyTank;
     public ParticleSystem explosion;
+
+    private Vector3 newVector;
     public float speed = 8.0f;
     public float rotateSpeed = 10.0f;
 
@@ -26,12 +28,18 @@ public class PlayerController : MonoBehaviour
         float xSpeed = xInput * speed;
         float zSpeed = zInput * speed;
 
-        Vector3 newVector = new Vector3 (xSpeed,0f, zSpeed);
+        newVector = new Vector3 (xSpeed,0f, zSpeed);
+    }
 
-        playerRigidbody.velocity = newVector; 
-        if(newVector != Vector3.zero)
+    private void FixedUpdate()
+    {
+        // 입력은 Update에서, 물리연산은 FixedUpdate에서 처리하는것이 좋음
+        // Update는 프레임에 영향을 받지만, FixedUpdate는 초당 50회 연산을 보장해 줄 수 있음
+        playerRigidbody.velocity = newVector;
+        if (newVector != Vector3.zero)
         {
-            playerRigidbody.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newVector), Time.deltaTime * rotateSpeed);
+            playerRigidbody.transform.rotation =
+                Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newVector), Time.deltaTime * rotateSpeed);
         }
     }
 
