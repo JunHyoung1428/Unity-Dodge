@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRigidbody;
     public ParticleSystem explosion;
     public float speed = 8.0f;
-    public float jumpForce = 20f;
+    public float rotateSpeed = 10.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,13 +25,12 @@ public class PlayerController : MonoBehaviour
         float xSpeed = xInput * speed;
         float zSpeed = zInput * speed;
 
-        Vector3 newVelocity = new Vector3 (xSpeed,0f, zSpeed);
+        Vector3 newVector = new Vector3 (xSpeed,0f, zSpeed);
 
-        playerRigidbody.velocity = newVelocity; //∞°º”µµ∏¶ ¡‹
-       
-        if (Input.GetKey(KeyCode.Space)==true)
+        playerRigidbody.velocity = newVector; //∞°º”µµ∏¶ ¡‹
+        if(newVector != null)
         {
-            playerRigidbody.velocity =Vector3.up*jumpForce;
+            playerRigidbody.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newVector), Time.deltaTime * rotateSpeed);
         }
     }
 
